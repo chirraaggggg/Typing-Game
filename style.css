@@ -178,4 +178,14 @@ body {
   .quote-input { min-height: 100px; font-size: 15px; }
 }
 
+.correct {
+    color: #a3e635 !important;
+    text-shadow: 2px 2px 0 #000 !important;
+}
+
+.incorrect {
+    color: #fb7185 !important;
+    text-decoration: underline wavy rgba(239,68,68,.55) !important;
+    text-shadow: 2px 2px 0 #000 !important;
+}
 
