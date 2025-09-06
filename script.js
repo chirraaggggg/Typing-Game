@@ -31,3 +31,9 @@ function resetTimer() {
   function getTimerTime() {
     return Math.floor((new Date() - startTime) / 1000)
   }
+
+  quoteInputElement.addEventListener('input', () => {
+    // Start timer on first character
+    if (quoteInputElement.value.length === 1) {
+        startTimer()
+    }
