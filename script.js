@@ -28,3 +28,6 @@ function resetTimer() {
     timerElement.innerText = '0'
   }
   
+  function getTimerTime() {
+    return Math.floor((new Date() - startTime) / 1000)
+  }
