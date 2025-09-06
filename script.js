@@ -22,3 +22,9 @@ function stopTimer() {
     timerInterval = null
   }
 }
+
+function resetTimer() {
+    stopTimer()
+    timerElement.innerText = '0'
+  }
+  
