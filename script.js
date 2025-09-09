@@ -3,37 +3,35 @@ const FALLBACK_QUOTE_API_URL = 'https://dummyjson.com/quotes/random'
 const quoteDisplayElement = document.getElementById('quoteDisplay')
 const quoteInputElement = document.getElementById('quoteInput')
 const timerElement = document.getElementById('timer')
+const wpmElement = document.getElementById('wpm')
+const accuracyElement = document.getElementById('accuracy')
+const restartBtn = document.getElementById('restartBtn')
 
 let correct = true
 let startTime
 let timerInterval
+let currentQuote = ''
+let totalCharacters = 0
+let correctCharacters = 0
 
-function startTimer() {
-  timerElement.innerText = 0
-  startTime = new Date()
-  timerInterval = setInterval(() => {
-    timerElement.innerText = getTimerTime()
-  }, 1000)
-}
+// Initialize the game
+document.addEventListener('DOMContentLoaded', () => {
+    renderNewQuote()
+    setupEventListeners()
+})
 
-function stopTimer() {
-  if (timerInterval) {
-    clearInterval(timerInterval)
-    timerInterval = null
-  }
-}
-
-function resetTimer() {
-    stopTimer()
-    timerElement.innerText = '0'
-  }
-  
-  function getTimerTime() {
-    return Math.floor((new Date() - startTime) / 1000)
-  }
-
-  quoteInputElement.addEventListener('input', () => {
-    // Start timer on first character
-    if (quoteInputElement.value.length === 1) {
-        startTimer()
+function setupEventListeners() {
+    quoteInputElement.addEventListener('input', handleInput)
+    
+    if (restartBtn) {
+        restartBtn.addEventListener('click', restartGame)
     }
+    
+    // Allow restart with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            restartGame()
+        }
+    })
+}
+
