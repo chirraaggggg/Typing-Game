@@ -35,3 +35,12 @@ function setupEventListeners() {
     })
 }
 
+function startTimer() {
+  timerElement.innerText = 0
+  startTime = new Date()
+  timerInterval = setInterval(() => {
+      timerElement.innerText = getTimerTime()
+      updateWPM()
+  }, 1000)
+}
+
